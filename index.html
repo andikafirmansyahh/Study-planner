@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Study Planner</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ========================================================================
+     SECTION: HEADER & PROGRESS BAR
+     ======================================================================== -->
+    <header>
+        <div class="head-in">
+            <p class="today mono" id="today">// hari ini</p>
+            <h1>Study Planner</h1>
+            <div class="prog" role="progressbar" aria-label="Progress tugas" aria-valuemin="0" aria-valuemax="100"
+                aria-valuenow="0" id="bar">
+                <div class="segs" id="segs" aria-hidden="true"></div>
+                <div class="prog-txt mono" id="pct">0%</div>
+            </div>
+            <p class="sub" id="count" aria-live="polite">0 dari 0 tugas selesai</p>
+        </div>
+    </header>
+
+    <!-- ========================================================================
+     SECTION: MAIN CONTENT
+     ======================================================================== -->
+    <main>
+        <!-- FORM INPUT TUGAS -->
+        <form id="form">
+            <label class="full">Judul tugas atau mata kuliah
+                <input id="title" type="text" required maxlength="120" placeholder="Praktikum Pemrograman Web">
+            </label>
+            <label>Tenggat
+                <input id="deadline" type="date" required>
+            </label>
+            <label>Prioritas
+                <select id="priority">
+                    <option>Tinggi</option>
+                    <option selected>Sedang</option>
+                    <option>Rendah</option>
+                </select>
+            </label>
+            <button class="add" type="submit">Tambah</button>
+        </form>
+
+        <!-- TAB FILTER TUGAS -->
+        <div class="tabs" role="group" aria-label="Filter tugas">
+            <button data-filter="semua" aria-pressed="true">Semua<span class="n mono" id="n-semua">0</span></button>
+            <button data-filter="belum" aria-pressed="false">Belum selesai<span class="n mono"
+                    id="n-belum">0</span></button>
+            <button data-filter="selesai" aria-pressed="false">Selesai<span class="n mono"
+                    id="n-selesai">0</span></button>
+        </div>
+
+        <!-- LIST TUGAS (DI-RENDER OLEH JAVASCRIPT) -->
+        <ul id="list"></ul>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
